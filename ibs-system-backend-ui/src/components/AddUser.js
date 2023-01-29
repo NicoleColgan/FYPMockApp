@@ -17,7 +17,7 @@ const AddUser = () => {
     id: "",
     firstName: "",
     lastName: "",
-    emailID: ""
+    emailId: ""
   });
   
   //handle change event i.e. change the state, 
@@ -42,6 +42,7 @@ const AddUser = () => {
     UserService.saveUser(user)
     .then((response) => {
       console.log(response)
+      console.log(user)
     }).catch ((error) => {
       console.log(error);
     })
@@ -69,10 +70,10 @@ const AddUser = () => {
         onChange={(e) => handleChange(e)}
         className='h-10 w-96 border mt-2 px-2 py-2'></input>
       </div>
-      <div className='items-center justify-center h-14 w-full py-10 '>
-        <label className='block text-gray-600 text-sm'>email</label>
-        <input type='email' name="email" 
-        value={user.emailID}
+      <div className='items-center justify-center h-14 w-full py-10'>
+        <label className='block text-gray-600 text-sm'>Email</label>
+        <input type='email' name="emailId" 
+        value={user.emailId}
         onChange={(e) => handleChange(e)}
         className='h-10 w-96 border mt-2 px-2 py-2'></input>
       </div>
