@@ -3,6 +3,7 @@ import Navbar from './components/Navbar'
 import AddUser from './components/AddUser';
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 import UserList from './components/UserList';
+import UpdateUser from './components/UpdateUser';
 
 //components (App) are used to render
 //you can only return one parent so if you wrap them in empty tags, you can return more than 1
@@ -19,6 +20,7 @@ function App() {
         <Route path="/" element={<UserList />}></Route>
         <Route path="/userList" element={<UserList />}></Route>
         <Route path="/addUser" element={<AddUser />}></Route>
+        <Route path="/editUser/:id" element={<UpdateUser />}></Route>
       </Routes>
     </BrowserRouter>
     </>

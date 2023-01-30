@@ -4,9 +4,12 @@ package com.ibs.backend.controller;
 import com.ibs.backend.model.User;
 import com.ibs.backend.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:3001")
 @RestController
@@ -34,5 +37,28 @@ public class UserController {
     @GetMapping("/users")
     public List<User> getAllUsers(){
         return userService.getAllUsers();
+    }
+
+    /**
+     *  Delete objects by the key
+     */
+    @DeleteMapping("/users/{id}")
+    public ResponseEntity<Map<String,Boolean>> deleteUser(@PathVariable Long id){
+        boolean deleted=false;
+        deleted= userService.deleteUser(id);
+        Map<String,Boolean> response = new HashMap<>();
+        response.put("deleted",deleted);
+        return ResponseEntity.ok(response);
+    }
+    @GetMapping("/users/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable Long id){
+        User user = null;
+        user=userService.getUserById(id);
+        return ResponseEntity.ok(user);
+    }
+    @PutMapping("/users/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User user){
+        user=userService.updateUser(id, user);
+        return ResponseEntity.ok(user);
     }
 }

@@ -10,6 +10,22 @@ class UserService {
         //save entire user object
         return axios.post(USER_API_URL,user);
     }
+
+    getUsers(){
+        return axios.get(USER_API_URL);
+    }
+
+    deleteUser(id) {
+        return axios.delete(USER_API_URL+"/"+id);
+    }
+
+    getUserById(){
+        return axios.get(USER_API_URL+"/"+id);
+    }
+
+    updateUser(user, id){
+        return axios.put(USER_API_URL+"/"+id, user);
+    }
 }
 
 //export functions for use in other js files

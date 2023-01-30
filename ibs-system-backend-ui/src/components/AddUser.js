@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import UserService from '../services/UserService';
+import { useNavigate } from "react-router-dom"
 
 const AddUser = () => {
   //create a state
@@ -19,6 +20,7 @@ const AddUser = () => {
     lastName: "",
     emailId: ""
   });
+  const navigate = useNavigate();
   
   //handle change event i.e. change the state, 
   //this means set the value of whatever input we are in
@@ -28,6 +30,15 @@ const AddUser = () => {
   const handleChange = (e) => {
     const value = e.target.value;
     setUser({...user,[e.target.name]: value});
+  }
+  const reset = (e) => {
+    e.preventDefault();
+    setUser({
+      id: "",
+      firstName: "",
+      lastName: "",
+      emailId: ""
+    });
   }
 
   //saving employee to db
@@ -43,6 +54,7 @@ const AddUser = () => {
     .then((response) => {
       console.log(response)
       console.log(user)
+      navigate("/userList");
     }).catch ((error) => {
       console.log(error);
     })
@@ -81,7 +93,9 @@ const AddUser = () => {
         <button 
         onClick={saveUser}
         className='rounded text-white font-semibold bg-green-400 py-2 px-4 hover:bg-green-700'>Save</button>
-        <button className='rounded text-white font-semibold bg-red-400 py-2 px-4 hover:bg-red-700'>Save</button>
+        <button 
+        onClick={reset}
+        className='rounded text-white font-semibold bg-red-400 py-2 px-4 hover:bg-red-700'>Clear</button>
       </div>
       
     </div>
