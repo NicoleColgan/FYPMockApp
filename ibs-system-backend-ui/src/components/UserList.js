@@ -8,6 +8,7 @@ const UserList = () => {
 
   const [loading, setLoading] = useState(true);
   const [users, setUsers] = useState(null);
+  
   useEffect(() => {
     const fetchData = async() =>{
       setLoading(true);
@@ -70,4 +71,4 @@ const UserList = () => {
   )
 }
 
-export default UserList
+export default UserList;

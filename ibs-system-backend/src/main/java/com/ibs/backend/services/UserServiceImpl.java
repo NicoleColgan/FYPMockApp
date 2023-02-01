@@ -42,7 +42,8 @@ public class UserServiceImpl implements UserService{
                 u.getId(),
                 u.getFirstName(),
                 u.getLastName(),
-                u.getEmailId()))
+                u.getEmailId(),
+                        u.getPassword()))
                 .collect(Collectors.toList());
         return users;
     }
@@ -71,8 +72,19 @@ public class UserServiceImpl implements UserService{
         userEntity.setEmailId(user.getEmailId());
         userEntity.setFirstName(user.getFirstName());
         userEntity.setLastName(user.getLastName());
+        userEntity.setPassword(user.getPassword());
         userRepository.save(userEntity);
         System.out.println(user);
         return user;
+    }
+
+    @Override
+    public boolean validateUser(String emailId, String password) {
+        List<User> users = getAllUsers();
+        for(int i=0; i< users.size(); i++){
+            if(users.size()!=0 && users.get(i).getPassword().equals(password) && users.get(i).getEmailId().equals(emailId))
+                return true;
+        }
+        return false;
     }
 }

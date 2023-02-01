@@ -5,6 +5,7 @@ const USER_API_URL = "http://localhost:8080/api/v1/users"
 
 class UserService {
 
+    //using this method
     saveUser(user) {
         //do the post request 
         //save entire user object
@@ -21,6 +22,10 @@ class UserService {
 
     getUserById(){
         return axios.get(USER_API_URL+"/"+id);
+    }
+
+    validateUser(emailId, password){
+        return axios.get(USER_API_URL+"/"+emailId, password);
     }
 
     updateUser(user, id){

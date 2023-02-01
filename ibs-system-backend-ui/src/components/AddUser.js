@@ -18,7 +18,8 @@ const AddUser = () => {
     id: "",
     firstName: "",
     lastName: "",
-    emailId: ""
+    emailId: "",
+    password: ""
   });
   const navigate = useNavigate();
   
@@ -37,7 +38,8 @@ const AddUser = () => {
       id: "",
       firstName: "",
       lastName: "",
-      emailId: ""
+      emailId: "",
+      password: ""
     });
   }
 

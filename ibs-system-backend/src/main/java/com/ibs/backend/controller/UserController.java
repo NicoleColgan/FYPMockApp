@@ -61,4 +61,10 @@ public class UserController {
         user=userService.updateUser(id, user);
         return ResponseEntity.ok(user);
     }
+    @GetMapping("/users/validate/{id}")
+    public boolean validateUser(@RequestBody String emailId, @RequestBody String password){
+        Boolean validated=false;
+        validated=userService.validateUser(emailId, password);
+        return validated;
+    }
 }
